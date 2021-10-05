@@ -576,7 +576,8 @@ class PackageManager():
 
                 cache_key = repo + '.dependencies'
                 repository_dependencies = get_cache(cache_key)
-                dependencies.update(repository_dependencies)
+                if repository_dependencies is not None:
+                    dependencies.update(repository_dependencies)
 
             else:
                 domain = urlparse(repo).hostname
