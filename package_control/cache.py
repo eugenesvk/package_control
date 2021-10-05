@@ -28,7 +28,9 @@ def get_cache(key, default=None):
     struct = _channel_repository_cache.get(key, {})
     expires = struct.get('expires')
     if expires and expires > time.time():
-        return struct.get('data')
+        data = struct.get('data')
+        if (data != {}) and (data is not None):
+          return data
     return default
 
 
